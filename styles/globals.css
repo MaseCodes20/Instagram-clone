@@ -10,4 +10,13 @@
   .btn {
     @apply h-7 hover:scale-125 cursor-pointer transition-all duration-150 ease-out;
   }
+  .messageElement {
+    @apply w-fit flex items-center font-semibold p-[15px]  m-[10px] min-w-[60px] relative text-right;
+  }
+  .sender {
+    @apply ml-auto border rounded-full bg-gray-500 text-white;
+  }
+  .reciever {
+    @apply bg-white rounded-full border-[1px] border-gray-300 text-left;
+  }
 }

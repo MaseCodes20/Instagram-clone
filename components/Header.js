@@ -19,7 +19,7 @@ function Header() {
   const router = useRouter();
 
   return (
-    <div className="shadow-sm border-b bg-white sticky top-0 z-50">
+    <div className="shadow-sm border-b bg-white sticky top-0 z-10">
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
         {/* Logo */}
         <div
@@ -65,7 +65,10 @@ function Header() {
           {session ? (
             <>
               <div className="relative navBtn">
-                <PaperAirplaneIcon className="navBtn rotate-45" />
+                <PaperAirplaneIcon
+                  onClick={() => router.push("/inbox/")}
+                  className="navBtn rotate-45"
+                />
 
                 {/* notification bounce */}
                 <div className="absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center animate-bounce ">

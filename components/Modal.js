@@ -1,4 +1,4 @@
-import { Snapshot, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
@@ -40,8 +40,6 @@ function Modal() {
       timestamp: serverTimestamp(),
     });
 
-    console.log("New doc added with ID", docRef.id);
-
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
     await uploadString(imageRef, selectedFile, "data_url").then(
@@ -73,7 +71,7 @@ function Modal() {
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed z-10 inset-0 overflow-y-auto"
+        className="fixed z-20 inset-0 overflow-y-auto"
         onClose={setOpen}
       >
         <div className="flex items-end justify-center min-h-{800px} sm:min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
