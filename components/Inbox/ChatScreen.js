@@ -1,15 +1,11 @@
 import { PaperAirplaneIcon } from "@heroicons/react/outline";
-import { addDoc, collection, query, where } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "../../firebase";
-import * as EmailValidator from "email-validator";
 import { useRecoilState } from "recoil";
-import { modalState } from "../../atoms/modalAtom";
+import { inboxModalState } from "../../atoms/modalAtom";
 
 function ChatScreen() {
   const { data: session } = useSession();
-  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [showModal, setShowModal] = useRecoilState(inboxModalState);
 
   return (
     <div className="min-h-[90vh] w-full flex-col items-center justify-center relative bg-white rounded-r-md">

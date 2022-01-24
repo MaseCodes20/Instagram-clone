@@ -1,8 +1,8 @@
 import { addDoc, collection, query, where } from "firebase/firestore";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useRecoilState } from "recoil";
-import { modalState } from "../../atoms/modalAtom";
+import { inboxModalState } from "../../atoms/modalAtom";
 import { db } from "../../firebase";
 import * as EmailValidator from "email-validator";
 import { useSession } from "next-auth/react";
@@ -10,8 +10,9 @@ import { useSession } from "next-auth/react";
 
 function InboxModal() {
   const { data: session } = useSession();
-  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [showModal, setShowModal] = useRecoilState(inboxModalState);
   const [input, setInput] = useState("");
+  const modalRef = useRef();
 
   // const animation = useSpring({
   //   config: {
@@ -55,12 +56,22 @@ function InboxModal() {
         chat.data().users.find((user) => user === recipientEmail)?.length > 0
     );
 
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      setShowModal(false);
+    }
+  };
+
   return (
     <div>
       {showModal ? (
-        <div className="flex-col bg-black/40 z-[1000] inset-0  min-w-[100%] min-h-[100%] absolute ">
+        <div
+          ref={modalRef}
+          onClick={closeModal}
+          className="flex-col bg-black/40 z-[1000] inset-0  min-w-[100%] min-h-[100%] absolute "
+        >
           {/* <animated.div style={animation}> */}
-          <div className="absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 bg-white min-w-[300px] max-w-[350px] min-h-[400px] rounded-xl">
+          <div className="absolute top-1/4 left-2/4 -translate-y-2/4 -translate-x-2/4 bg-white min-w-[300px] max-w-[350px] min-h-[400px] rounded-xl">
             <div className="p-2 min-w-[300px] max-w-[350px] border-b-2 border-gray-300  text-center font-semibold">
               <div className="m-2">
                 <h1>New Message</h1>

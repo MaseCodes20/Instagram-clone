@@ -1,17 +1,15 @@
 import { PencilAltIcon } from "@heroicons/react/outline";
 import { useSession } from "next-auth/react";
-import * as EmailValidator from "email-validator";
-import { addDoc, collection, query, where } from "firebase/firestore";
+import { collection, query, where } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../firebase";
 import Chat from "./Chat";
-import { useState } from "react";
-import { modalState } from "../../atoms/modalAtom";
+import { inboxModalState } from "../../atoms/modalAtom";
 import { useRecoilState } from "recoil";
 
 function Sidebar() {
   const { data: session } = useSession();
-  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [showModal, setShowModal] = useRecoilState(inboxModalState);
 
   const userChatRef = query(
     collection(db, "chats"),

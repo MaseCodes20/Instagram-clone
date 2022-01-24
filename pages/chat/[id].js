@@ -18,26 +18,24 @@ import getRecipientEmail from "../../utils/getRecipientEmail";
 function Chat({ chat, messages, id }) {
   const { data: session } = useSession();
 
+  if (!session) return <Header />;
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Head>
         <title>Chat with {getRecipientEmail(chat.users, session?.user)}</title>
       </Head>
 
-      {session == null ? <Header /> : <Header />}
+      <Header />
 
       <div className="max-w-6xl min-h-[90vh] bg-white flex mx-auto my-4 border border-gray-300 rounded-md">
-        {session !== undefined ? <Sidebar /> : ""}
+        <Sidebar />
 
         <div className="flex-1">
-          {session !== undefined ? (
-            <ChatRoom chat={chat} messages={messages} chat_id={id} />
-          ) : (
-            ""
-          )}
+          <ChatRoom chat={chat} messages={messages} chat_id={id} />
         </div>
       </div>
-      {session !== undefined ? <InboxModal /> : ""}
+      <InboxModal />
     </div>
   );
 }
