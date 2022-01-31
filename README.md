@@ -1,3 +1,9 @@
+Login | Sign Out - using Gmail
+Instagram feed - Post, like, comment
+Stories Component
+Mini profile - suggestions
+Inbox - 1n1 chatting, LastSeen
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
