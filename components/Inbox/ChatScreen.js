@@ -1,10 +1,8 @@
 import { PaperAirplaneIcon } from "@heroicons/react/outline";
-import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
 import { inboxModalState } from "../../atoms/modalAtom";
 
 function ChatScreen() {
-  const { data: session } = useSession();
   const [showModal, setShowModal] = useRecoilState(inboxModalState);
 
   return (

@@ -8,12 +8,14 @@ import { inboxModalState } from "../../atoms/modalAtom";
 import { useRecoilState } from "recoil";
 
 function Sidebar() {
-  const { data: session } = useSession();
+  const {
+    data: { user },
+  } = useSession();
   const [showModal, setShowModal] = useRecoilState(inboxModalState);
 
   const userChatRef = query(
     collection(db, "chats"),
-    where("users", "array-contains", session.user.email)
+    where("users", "array-contains", user.email)
   );
 
   const [chatsSnapshot] = useCollection(userChatRef);
@@ -23,9 +25,7 @@ function Sidebar() {
       <div className="flex justify-center items-center w-[350px] min-h-[70px] border-b-[2px] border-gray-300 sticky top-0 z-1">
         <div className="flex-1">
           {/* User Thats logged in */}
-          <h2 className="font-bold pl-3 text-center">
-            {session.user?.username}
-          </h2>
+          <h2 className="font-bold pl-3 text-center">{user?.username}</h2>
         </div>
 
         <div className="pr-5">
