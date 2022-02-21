@@ -1,9 +1,5 @@
-import { collection, query, where } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
 import Moment from "react-moment";
-import { db } from "../../firebase";
-import getRecipientEmail from "../../utils/getRecipientEmail";
 
 function Message({ user, message, chat, userImg }) {
   const { data: loggedIN } = useSession();

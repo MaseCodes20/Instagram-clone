@@ -19,4 +19,7 @@
   .reciever {
     @apply bg-white rounded-full border-[1px] border-gray-300 text-left;
   }
+  .menuItem {
+    @apply md:hidden mr-4;
+  }
 }
