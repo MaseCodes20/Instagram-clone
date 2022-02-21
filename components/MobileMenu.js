@@ -8,9 +8,12 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtom";
 
 function MobileMenu() {
   const router = useRouter();
+  const [open, setOpen] = useRecoilState(modalState);
 
   return (
     <div>
@@ -58,7 +61,7 @@ function MobileMenu() {
                   className={`flex items-center cursor-pointer px-4 py-2 text-sm ${
                     active && "bg-blue-500 text-white scale-105 rounded-md"
                   }`}
-                  onClick={() => router.push("")}
+                  onClick={() => setOpen(true)}
                 >
                   <PlusCircleIcon
                     className={`${active && "text-white"} h-7 menuItem`}
