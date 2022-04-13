@@ -150,7 +150,7 @@ function ChatRoom({ chat, messages }) {
       </div>
 
       {/* Input */}
-      <div className="min-h-[100px] sticky bottom-0 z-[100] bg-white rounded-br-md">
+      <div className="min-h-[100px] sticky bottom-0 z-[10] bg-white rounded-br-md">
         <form className="flex items-center justify-center border-[1px] border-gray-400 rounded-3xl m-2 my-5 p-2 sticky bottom-0">
           <EmojiHappyIcon className="h-8" />
           <input

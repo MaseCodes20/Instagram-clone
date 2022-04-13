@@ -68,10 +68,10 @@ function InboxModal() {
         <div
           ref={modalRef}
           onClick={closeModal}
-          className="flex-col bg-black/40 z-[1000] inset-0  min-w-[100%] min-h-[100%] absolute "
+          className="fixed flex bg-black/40 top-0 right-0 left-0 bottom-0 items-center justify-center z-10 "
         >
           {/* <animated.div style={animation}> */}
-          <div className="absolute top-1/4 left-2/4 -translate-y-2/4 -translate-x-2/4 bg-white min-w-[300px] max-w-[350px] min-h-[400px] rounded-xl">
+          <div className="centeredOnScreen bg-white min-w-[300px] max-w-[350px] min-h-[400px] rounded-xl">
             <div className="p-2 min-w-[300px] max-w-[350px] border-b-2 border-gray-300  text-center font-semibold">
               <div className="m-2">
                 <h1>New Message</h1>
